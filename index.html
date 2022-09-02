@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+        box-sizing: border-box;
+        font-family: 'Montserrat';
+      }
+      html, body {
+        width: 100%;
+      }
+      /* navbar */
+      .navbar {
+        padding: 0 7%;
+        position: relative;
+      }
+      .nav-left-link{
+        padding: 2px 5px;
+      }
+      .nav-left-link:hover{
+        color: #e20a14;
+      }
+      .active-link {
+        color: white !important;
+        border-left: 5px solid #e20a14;
+      }
+      .navbar-brand-container{
+        position: absolute;
+        width: 155px;
+        left: 50%;
+        top: 0;
+        margin-left: -77.5px;
+      }
+
+      /* title-section */
+      #title {
+        background: linear-gradient(#000, #21106e);
+        display: grid; grid-template-columns: 1fr 1fr;
+        padding: 1em 5em;
+        overflow: hidden;
+      }
+      .title-text-container {
+        color: white;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+      }
+      .title-text-container > div > h3 {
+        font-size: 38px;
+        font-weight: 400;
+      }
+      .title-text-container > div > p {
+        font-size: 19px;
+      }
+      .title-text-container > div > button {
+        color: white;
+        font-size: 19px;
+        background: linear-gradient(90deg, #e20a14, #71050a);
+        border: none;
+        padding: 0.5em 2.5em;
+        border-radius: 5px;
+      }
+
+      .title-img-container > img {
+        transition: transform 0.5s ease-out;
+      }
+      .title-img-container > img:hover{
+        transform-origin: bottom right;
+        transform: scale(3.5);
+      }
+
+      /* content */
+      #content{
+        padding: 1em 2.5em;
+      }
+      #content > p {
+        text-align: center; 
+        font-family: 'poppins'; 
+        font-size: 22px; 
+        color: #707070;
+        padding: 0.5em;
+      }
+      .content-imgs-container{
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 0.4em;
+
+        padding: 0.8em 0;
+      }
+      .content-imgs-container > div > div > img {
+        height: 100%;
+        width: 100% !important;
+      }
+      .row-with-3-imgs{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 0.4em;
+      }
+      .row-with-4-imgs{
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr 2fr;
+        column-gap: 0.4em;
+      }
+
+      /* Navigator-btns */
+      .navigator-btns-container{
+        text-align: center;
+        padding: 2.5em 0 3.5em 0;
+      }
+      .navigator-btns-container > button{
+        background-color: transparent;
+        border: 1px solid #000;
+        border-radius: 10px;
+        width: 32px;
+      }
+      .navigator-btns-container > button:focus {
+        background: linear-gradient(60deg, #e20a14, #71050a);
+        color: #fff;
+        border: none;
+      }
+      .left-right-navigator{
+        color: #e20a14;
+        font-weight: 900;
+        border: none !important;
+      }
+
+      /* Footer */
+      footer{
+          background-color: #000;
+          padding: 3em 5em;
+          color: #fff;
+
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      }
+      footer > div{
+          padding: 0 2em;
+      }
+      .footer-link{
+          color: #afafaf;
+          font-size: 15px;
+          text-decoration: none;
+      }
+      .footer-list-item{
+          text-align: left !important;
+      }
+      .footer-link:hover{
+          color: #e20a14;
+      }
+
+      /* media queries */
+      @media screen and (max-width: 480px){
+        .title-text-container > div > h3 {
+        font-size: 32px;
+        font-weight: 400;
+        }
+        .title-text-container > div > p {
+            font-size: 16px;
+        }
+        .title-text-container > div > button {
+            font-size: 15px;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        /* Navbar */
+        .navbar {
+          padding: 0.5em;
+        }
+        .nav-left-links-container {
+          margin-top: 0.2em;
+        }
+        .nav-left-links-container > ul > li{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        .nav-left-links-container > ul > li > a {
+          text-align: center;
+          width: 250px;
+        }
+        .active-link {
+          border-left: 5px solid #e20a14;
+          border-right: 5px solid #e20a14;
+        }
+        .nav-right-items-container > ul{
+          width: 100%;
+          flex-direction: row;
+          justify-content: center;
+          gap: 0.8em;
+        }
+        /* title-section */
+        #title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2em;
+        }
+        .title-text-container > div{
+            text-align: center;
+        }
+        .title-img-container {
+            display: none;
+        }
+
+        /* imgs grid */
+        #content > p{
+          font-size: 18px;
+        }
+        .row-with-3-imgs{
+          grid-template-columns: repeat(2, 1fr);
+          row-gap: 0.4em;
+        }
+        .row-with-3-imgs > div:nth-child(3){
+          grid-column: span 2;
+        }
+
+        .row-with-4-imgs{
+          grid-template-columns: repeat(4, 1fr);
+          row-gap: 0.4em;
+        }
+        .row-with-4-imgs > div:nth-child(1){
+          grid-column: 1 / 4;
+          grid-row: 1 / 3;
+        }
+        .row-with-4-imgs > div:nth-child(2){
+          grid-column: 4;
+          grid-row: 1 / 3;
+        }
+        .row-with-4-imgs > div:nth-child(3){
+          grid-column: 1 / 3;
+          grid-row: 3;
+        }
+        .row-with-4-imgs > div:nth-child(4){
+          grid-column: 3 / 5;
+          grid-row: 3;
+        }
+
+        footer {
+            padding: 1.5em 0;
+        }
+      }
+    </style>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <button
+          id="nav-1-toggler"
+          class="navbar-toggler ms-auto"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#toggler-target"
+          aria-controls="toggler-target"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- links on left side -->
+        <div class="nav-left-links-container collapse navbar-collapse" id="toggler-target">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="#" class="nav-link nav-left-link">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link nav-left-link">Images</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link nav-left-link">Illustrations</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link nav-left-link">Figurants</a>
+            </li>
+          </ul>
+          <!-- Items on right side -->
+          <div class="nav-right-items-container navbar-expand-sm ms-auto">
+            <ul class="navbar-nav" style="display: flex; align-items: center">
+              <li class="nav-item" style="line-height: 1.7">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-bolt"></i> Terifs</a>
+              </li>
+              <li class="nav-item" style="line-height: 1.7">
+                <a href="#" class="nav-link"
+                  ><i class="fa-solid fa-cloud-arrow-up"></i> Vendre</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link"><i class="fa-solid fa-user fa-2x current-user"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- brand image -->
+        <div class="navbar-brand-container">
+          <img class="img-fluid" src="caribo_stock_brand.png" alt="Caribou Stock" />
+        </div>
+      </nav>
+
+      <!-- Location-title -->
+      <section id="title">
+        <div class="title-text-container">
+            <div>
+                <h3 class="location-name"><i class="fa-solid fa-location-dot"></i> Mayotte</h3>
+                <p>
+                    Vous avez besoin d’une image qui attire l’œil et que vous 
+                    pouvez utiliser à plusieurs 
+                    reprises sur différentes plates-formes ? Pour rester dans un cadre légal
+                </p>
+                <button>Trouvez votre abonnement </button>
+            </div>
+        </div>
+        <div class="title-img-container">
+            <img class="img-fluid" src="img_by_location-title_bg.png" alt="">
+        </div>
+      </section>
+
+      <!-- Images/content section -->
+    <section id="content">
+        <p>
+          <span>Plus de <span class="profile-total-uploads" style="color: #000;">569</span> images, libres de droits sont disponibles pour la géolocalisation Mayotte     </span>
+        </p>
+        <div class="content-imgs-container">
+          <div class="row-with-3-imgs">
+            <div>
+              <img class="img-fluid" src="Image 1.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 2.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 3.png" alt="">
+            </div>
+          </div>
+          <div class="row-with-4-imgs">
+            <div>
+              <img class="img-fluid" src="Image 4.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 5.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 6.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 7.png" alt="">
+            </div>
+          </div>
+          <div class="row-with-3-imgs">
+            <div>
+              <img class="img-fluid" src="Image 8.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 9.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 10.png" alt="">
+            </div>
+          </div>
+          <div class="row-with-3-imgs">
+            <div>
+              <img class="img-fluid" src="Image 1.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 2.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 3.png" alt="">
+            </div>
+          </div>
+          <div class="row-with-4-imgs">
+            <div>
+              <img class="img-fluid" src="Image 4.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 5.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 6.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 7.png" alt="">
+            </div>
+          </div>
+          <div class="row-with-3-imgs">
+            <div>
+              <img class="img-fluid" src="Image 8.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 9.png" alt="">
+            </div>
+            <div>
+              <img class="img-fluid" src="Image 10.png" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- navigator buttons -->
+      <div class="navigator-btns-container">
+        <button class="left-right-navigator"><</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <span>...</span>
+        <button>8</button>
+        <button class="left-right-navigator">></button>
+      </div>
+  
+      <!-- footer -->
+      <section title="footer">
+        <footer>
+          <div>
+            <div style="height: 60px; width: 120px">
+              <img class="img-fluid" src="footer-brand-img.jpg" alt="" />
+            </div>
+            <p style="font-size: 15px; text-align: left">
+              Caribou Stock est une banque d’images et d’illustrations numériques
+              de L’Ocean Indien , proposant une vision réaliste et contemporaine
+              d’images exclusivement africaines, que vous soyez de Mayotte à
+              Madagascar en passant par les Comores à la Reunion Caribou Stock
+              sera pour vous un révélateur de mémoire avec ces images qui nous
+              ressemble et nous Rassemblent.
+            </p>
+          </div>
+          <div style="padding-top: 1.3em">
+            <p
+              style="
+                font-family: 'Montserrat';
+                margin-bottom: 5px;
+                text-align: left;
+              "
+            >
+              A propos de
+            </p>
+            <ul style="list-style-type: none; padding: 0">
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Conditionnas général de vente</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Conditions d’utilisateur</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Politique de confidentialité</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">A propos</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Cookie</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Contactez - nous</a>
+              </li>
+            </ul>
+          </div>
+          <div style="padding-top: 1.3em">
+            <p style="margin-bottom: 5px; text-align: left">Catégories</p>
+            <ul style="list-style-type: none; padding: 0">
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Nature & Paysage</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Sport</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Voyage</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Famille</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Enseignement</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Portrait</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Profession</a>
+              </li>
+              <li class="footer-list-item">
+                <a href="#" class="footer-link">Business & Enterprise</a>
+              </li>
+            </ul>
+          </div>
+          <div style="padding-top: 1.3em">
+            <p style="margin-bottom: 5px; text-align: left">Liens</p>
+            <div
+              style="
+                font-size: smaller;
+                line-height: 1;
+                color: #afafaf;
+                text-align: left;
+              "
+            >
+              <ul style="list-style-type: none; padding: 0">
+                <li class="footer-list-item">
+                  <a href="#" class="footer-link"
+                    >Conditionnas général de vente</a
+                  >
+                </li>
+                <li class="footer-list-item">
+                  <a href="#" class="footer-link">Conditions d’utilisateur</a>
+                </li>
+              </ul>
+              <button>Drop Down for location</button>
+              <p style="margin: 2em 0; color: white; text-align: left">
+                <i class="fa-brands fa-square-facebook fa-2x"></i>
+                <i class="fa-brands fa-square-instagram fa-2x"></i>
+                <i class="fa-brands fa-square-youtube fa-2x"></i>
+                <i class="fa-brands fa-linkedin fa-2x"></i>
+              </p>
+            </div>
+          </div>
+        </footer>
+      </section>
+  
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            // Applying red left border for each link on navs' left side
+            let navbarLeftLinks = document.getElementsByClassName("nav-left-link");
+        
+            function makeClickedLinkActive(a){
+                for(var i = 0; i < navbarLeftLinks.length; i++){
+                    navbarLeftLinks[i].classList.remove('active-link');
+                }
+                a.classList.add("active-link");
+            }
+        
+            for(var i = 0; i < navbarLeftLinks.length; i++){
+                navbarLeftLinks[i].addEventListener('click', function(e){
+                    makeClickedLinkActive(e.target);
+                }, false);
+            }
+            </script>
+
+</body>
+</html>
